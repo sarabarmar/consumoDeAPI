@@ -1,0 +1,13 @@
+<h2>Lista de Pokémons</h2>
+
+<!-- Si está cargando muestra este mensaje -->
+<div *ngIf="loading">
+  <p>Cargando pokémons...</p>
+</div>
+
+<!-- Cuando ya cargó, muestra la lista -->
+<ul *ngIf="!loading">
+  <li *ngFor="let pokemon of pokemons">
+    {{ pokemon.name }}
+  </li>
+</ul>
