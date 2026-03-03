@@ -1,0 +1,41 @@
+.titulo {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 32px;
+  color: #ff3e3e;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 120px;
+}
+
+.card h3 {
+  margin-top: 10px;
+  text-transform: capitalize;
+}

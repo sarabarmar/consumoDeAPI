@@ -5,23 +5,35 @@ import { PokemonService } from '../pokemon.service';
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './pokemon-list.component.html',
-  styleUrl: './pokemon-list.component.css'
+  styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons : any[] = [];
 
-  loanding : boolean = true;
+  pokemons: any[] = [];
+  loading: boolean = true;
 
-  constructor (private pokemonService : PokemonService){}
-    ngOnInit(): void {
-      this.pokemonService.getPokemons().subscribe(data => {
-        this.pokemons = data.results;
+  constructor(private pokemonService: PokemonService){}
 
-        this.loanding = false
-      })
-    }
-  
+  ngOnInit(): void {
 
+  this.pokemonService.getPokemons().subscribe((data: any) => {
+
+    const results = data.results;
+
+    this.pokemons = []; // limpiar antes
+
+    results.forEach((pokemon: any) => {
+
+      this.pokemonService.getPokemonDetail(pokemon.url)
+        .subscribe((detail: any) => {
+          this.pokemons.push(detail);
+        });
+
+    });
+
+    this.loading = false;
+  });
+}
 }
